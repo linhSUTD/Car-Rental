@@ -1,0 +1,59 @@
+
+<div class="modal-body">
+    <div class="portlet light bordered">
+        <div class="portlet-title">
+            <div class="caption">
+                Car Information
+            </div>
+        </div>
+
+        <div class="portlet-body form">
+
+            <form role="form">
+                <div class="form-body">
+
+                    <div class="form-group">
+                        <label class="control-label" style="color: black;">Car Plate</label>
+                        <div class="input-group">
+                            <span class="input-group-addon">
+                                <i class="fa fa-car"></i>
+                            </span>
+                            <input type="text" ng-model="car.plate" class="form-control">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label" style="color: black;">Car Condition</label>
+                        <div class="input-group">
+                            <span class="input-group-addon">
+                                <i class="fa fa-car"></i>
+                            </span>
+
+                            <select ng-model="car.condition" class="form-control">
+                                <option value="">---Please Select---</option>
+                                <option value="Excellent">Excellent</option>
+                                <option value="Normal">Normal</option>
+                                <option value="Bad">Bad</option>
+                            </select>
+
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label" style="color: black;">Choose A Parking Lot</label>
+                        <div map-canvas id="addCar_mapCanvas" style="height:400px;"></div>
+                    </div>
+
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<div class="modal-footer">
+    <div >
+        <button class="btn btn-sm btn-circle red" type="button" ng-click="cancel()"><i class="fa fa-ban"></i> Cancel</button>
+        <button class="btn btn-sm btn-circle green" type="button" ng-click="submitCar()"><i class="icon-plus"></i>Update Car</button>
+    </div>
+
+</div>

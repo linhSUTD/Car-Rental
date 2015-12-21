@@ -1,0 +1,434 @@
+﻿<!DOCTYPE html>
+<html ng-app="portalApp">
+<head>
+    <title>Portal</title>
+    <meta charset="utf-8" />
+    <meta name="author" content="Script Tutorials" />
+    <meta name="description" content="Welcome to mekatopia">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="bower_components/gritter/css/jquery.gritter.css" />
+    <link rel="stylesheet" href="css/portal.css" />
+    <link rel="stylesheet" href="css/list_animate.css" />
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/waypoints/2.0.5/waypoints.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.3.15/angular.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.3.15/angular-animate.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-mousewheel/3.1.12/jquery.mousewheel.min.js"></script>
+    <script src="bower_components/gritter/js/jquery.gritter.min.js"></script>
+
+    <script src="scripts/jquery.lazylinepainter-1.5.1.min.js"></script>
+    <script src="scripts/vectors.js"></script>
+    <script type="text/javascript" src="scripts/portal/portal.js"></script>
+    <script type="text/javascript" src="scripts/portal/portal-controller.js"></script>
+    <script type="text/javascript" src="scripts/utils.js"></script>
+
+</head>
+
+
+
+<body id="page-top" data-spy="scroll" data-target=".navbar-fixed-top" ng-controller="portalController" portal-page class="body-no-scroll">
+    <div class="overlay-div" id="loadScreen">
+        <style>
+            .overlay-div {
+                z-index: 10;
+                background: rgb(34, 34, 34);
+                height: 100%;
+                position: absolute;
+                width: 100%;
+            }
+
+            .spinner {
+                margin: auto;
+                margin-top: 10%;
+                width: 80px;
+                height: 80px;
+                position: relative;
+                text-align: center;
+                -webkit-animation: rotate 2.0s infinite linear;
+                animation: rotate 2.0s infinite linear;
+            }
+
+            .load-text {
+                color: white;
+                font-size: 20px;
+                font-weight: 600;
+                text-align: center;
+                margin-top: 3%;
+            }
+
+
+            .dot1, .dot2 {
+                width: 60%;
+                height: 60%;
+                display: inline-block;
+                position: absolute;
+                top: 0;
+                background-color: white;
+                border-radius: 100%;
+                -webkit-animation: bounce 2.0s infinite ease-in-out;
+                animation: bounce 2.0s infinite ease-in-out;
+            }
+
+            .dot2 {
+                top: auto;
+                bottom: 0px;
+                -webkit-animation-delay: -1.0s;
+                animation-delay: -1.0s;
+            }
+
+            @-webkit-keyframes rotate {
+                100% {
+                    -webkit-transform: rotate(360deg);
+                }
+            }
+
+            @keyframes rotate {
+                100% {
+                    transform: rotate(360deg);
+                    -webkit-transform: rotate(360deg);
+                }
+            }
+
+            @-webkit-keyframes bounce {
+                0%, 100% {
+                    -webkit-transform: scale(0.0);
+                }
+
+                50% {
+                    -webkit-transform: scale(1.0);
+                }
+            }
+
+            @keyframes bounce {
+                0%, 100% {
+                    transform: scale(0.0);
+                    -webkit-transform: scale(0.0);
+                }
+
+                50% {
+                    transform: scale(1.0);
+                    -webkit-transform: scale(1.0);
+                }
+            }
+        </style>
+        <div class="spinner page-loader">
+            <div class="dot1"></div>
+            <div class="dot2"></div>
+        </div>
+        <p class="load-text">
+            PLEASE WAIT
+            <br />
+            We're loading the awesome
+        </p>
+    </div>
+    <!-- Navigation -->
+    <nav class="navbar navbar-default navbar-fixed-top" role="navigation" id="pageNavBar" style="display:none;">
+        <div class="container">
+            <div class="navbar-header page-scroll">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse navbar-ex1-collapse">
+                <ul class="nav navbar-nav ">
+                    <!-- Hidden li included to remove active class from about link when scrolled up past about section -->
+                    <li class="hidden">
+                        <a class="page-scroll" href="#page-top"></a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" href="#intro">Intro</a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" href="#services" id="servicesLink">How it works</a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" href="#achievement" id="achievementLink">Achievements</a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" href="#feedback">Feedbacks</a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" href="#ending">Join now</a>
+                    </li>
+                </ul>
+                <ul class="nav navbar-nav" style="float:right;">
+                    <li>
+                        <button onclick="signIn_Click();" class="signup-button-start">Sign in</button>
+                    </li>
+                    <li>
+                        <button onclick="signUp_Click();" class="signup-button-start">Sign up</button>
+                    </li>
+                </ul>
+
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container -->
+    </nav>
+
+    <!-- Intro Section -->
+    <section id="intro" class="page-section" data-speed="6" data-type="background">
+        <div class="container">
+            <p class="intro-big-text-center">MEKATOPIA</p>
+
+            <img src="images/logo_white.png" id="intro-logo" />
+
+            <div class="intro-small-text-center">
+                GET YOUR OWN CAR NOW
+            </div>
+
+
+            <button class="direct-button" onclick="document.getElementById('servicesLink').click();">Find out how</button>
+
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="page-section" data-speed="6" data-type="background" ng-controller="mapController">
+        <div style="height:10%;">
+            <p class="service-big-text-center " style="color:black;padding-bottom:0.1em;">{{modalTitle}}</p>
+        </div>
+        <div id="pageMap" map-canvas>
+
+        </div>
+
+        <div class="modal fade" id="mapModal">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title" id="mapModalTitle">{{modalTitle}}</h4>
+                    </div>
+                    <div class="modal-body">
+                        <span>
+                            Park icon looks like this
+                            <img ng-src="{{parkicon}}" />
+                        </span>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">OK</button>
+
+                    </div>
+                </div><!-- /.modal-content -->
+            </div><!-- /.modal-dialog -->
+        </div><!-- /.modal -->
+    </section>
+
+
+    <section id="achievement" class="page-section" data-speed="6" data-type="background" ng-controller="achievementController">
+
+        <div id="achievement_topPlace" style="height:1px;width:100%;"></div>
+        <div>
+            <div class="vertical-center">
+                <p class="text-medium-center slide-left" id="achievementText">Our achievement</p>
+                <p class="subtitle-text-md-center">We are a big family with an insatiable thirst for adventures and sports.</p>
+            </div>
+
+        </div>
+        <div class="container" id="achievementInfo">
+
+            <div class="row statisticRow">
+                <div class="statisticElement col-md-4" data-statistic="user">
+                    <div style="padding-top:1%;">
+                        <div id="userSvgVector" class="svg-container"></div>
+                    </div>
+                    <div>
+                        <div class="statistic-value-medium">{{getFormatedNumber(user.value)}}</div>
+                        <div class="statistic-unit-medium">million users</div>
+                    </div>
+                </div>
+
+                <div class="statisticElement col-md-4" data-statistic="road">
+                    <div style="padding-top:1%;">
+                        <div id="roadSvgVector" class="svg-container"></div>
+                    </div>
+                    <div>
+                        <div class="statistic-value-medium">{{getFormatedNumber(road.value)}} </div>
+                        <div class="statistic-unit-medium">kilometers covered</div>
+                    </div>
+                </div>
+
+                <div class="statisticElement col-md-4" data-statistic="upvote">
+                    <div style="padding-top:1%;">
+                        <div id="upvoteSvgVector" class="svg-container"></div>
+                    </div>
+                    <div>
+                        <div class="statistic-value-medium">{{getFormatedNumber(upvote.value)}}  </div>
+                        <div class="statistic-unit-medium">positive feedbacks</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row statisticRow">
+                <div class="statisticElement col-md-4" data-statistic="time">
+                    <div style="padding-top:1%;">
+                        <div id="timeSvgVector" class="svg-container"></div>
+                    </div>
+                    <div>
+                        <div class="statistic-value-medium">{{getFormatedNumber(time.value)}}</div>
+                        <div class="statistic-unit-medium">hours worked</div>
+                    </div>
+                </div>
+
+                <div class="statisticElement col-md-4" data-statistic="money">
+                    <div style="padding-top:1%;">
+                        <div id="moneySvgVector" class="svg-container"></div>
+                    </div>
+                    <div>
+                        <div class="statistic-value-medium">{{getFormatedNumber(money.value)}} </div>
+                        <div class="statistic-unit-medium">dollars saved</div>
+                    </div>
+                </div>
+
+                <div class="statisticElement col-md-4" data-statistic="social">
+                    <div style="padding-top:1%;">
+                        <div id="socialSvgVector" class="svg-container"></div>
+                    </div>
+                    <div>
+                        <div class="statistic-value-medium">{{getFormatedNumber(social.value)}} </div>
+                        <div class="statistic-unit-medium">social followings</div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <section id="feedback" class="page-section">
+        <div class="col-md-4 vertical-center" style="padding:1em;">
+            <p class="text-medium-center"> Why our clients love us</p>
+            <p class="subtitle-text-md-center">AND WHY THEY KEEP COMING BACK</p>
+        </div>
+        <div class="col-md-8 vertical-center" style="height:65%;">
+            <div id="feedback-carousel" class="carousel slide" data-ride="carousel" data-interval="9000">
+                <!-- Indicators -->
+                <!--<ol class="carousel-indicators">
+                    <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+                    <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+                    <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+                </ol>-->
+                <!-- Wrapper for slides -->
+                <div class="carousel-inner" style="height:100%;">
+                    <div class="item active" style="height:100%;">
+                        <div class="feedback-slide">
+                            <div style="height:100%;">
+                                <p class="feedback-text vertical-center" style="height:70%;">
+                                    “I travel to the White house three times a day just to experience the driving. My wife tried it and she said being a taxi driver was much more fun than the First Lady. ”
+
+                                </p>
+                                <div class="feedback-author-div">
+                                    <span>
+                                        <img class="author-img img-circle" src="images/obama.jpg" />
+                                        Barrack Obama
+                                    </span>
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </div>
+                    <div class="item" style="height:100%;">
+                        <div class="feedback-slide">
+                            <div style="height:100%;">
+                                <p class="feedback-text vertical-center" style="height:70%;">
+                                    “Absolutely the most amazing and comforting service possible. The only problem is that when it falls, you don't get a penalty. But who cares when you can score a hattrick in 8 minutes? ”
+
+                                </p>
+                                <div class="feedback-author-div">
+                                    <span>
+                                        <img class="author-img img-circle" src="images/ronaldo.jpg" />
+                                        Christiano Ronaldo
+                                    </span>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="item" style="height:100%;">
+                        <div class="feedback-slide">
+                            <div style="height:100%;">
+                                <p class="feedback-text vertical-center" style="height:70%;">
+                                    “Darn it, I seriously wish I founded this company 40 years ago instead of Microsoft. These cars have much better Windows than I do :( ”
+
+                                </p>
+                                <div class="feedback-author-div">
+                                    <span>
+                                        <img class="author-img img-circle" src="images/bilgate.jpg" />
+                                        Bill Gates
+                                    </span>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Controls -->
+                <a class="left carousel-control carousel-arrow" href="#feedback-carousel" role="button" data-slide="prev">
+                    <span class="glyphicon glyphicon-chevron-left"></span>
+                </a>
+                <a class="right carousel-control carousel-arrow" href="#feedback-carousel" role="button" data-slide="next">
+                    <span class="glyphicon glyphicon-chevron-right "></span>
+                </a>
+            </div> <!-- Carousel -->
+        </div>
+    </section>
+
+    <section id="ending" class="page-section" data-speed="5" data-type="background">
+        <img src="images/logo_white.png" id="endLogo" />
+        <div class="intro-medium-text-center" style="margin-bottom:1%;">
+            Interested? Join us
+        </div>
+        <div class="intro-tiny-text-center">
+            And do not mind the numbers above
+        </div>
+        <div class="intro-tiny-text-center">
+            Those are all fake.
+        </div>
+        <button class="signup-button-end" onclick="signUp_Click();">Sign up now</button>
+        <div class="container" id="contact-end" style="padding-left:0;padding-right:0;line-height:1.9em;margin-top:5%;">
+            <div class="col-md-6" style="color:white;text-align:left;padding-left:0;font-size:17px;">
+                <div style="color:rgb(96, 96, 96);">DEVELOPER </div>
+                NGUYEN HOANG LINH
+                <br />
+                BISHAN STREET 13, BLOCK 168 16-03
+                <br />
+                (82)10 5946 9216 - <span style="color:rgb(226, 173, 26)">linhnh@kaist.ac.kr</span>
+            </div>
+        </div>
+    </section>
+
+    <script>
+
+        function getScopeById(id) {
+            return angular.element(document.getElementById(id)).scope();
+        }
+
+        function signUp_Click() {
+            var host = window.location.host;
+            window.location.href = 'http://' + host + '/#/register';
+        }
+
+        function signIn_Click() {
+            var host = window.location.host;
+            window.location.href = 'http://' + host + '/#/login';
+        }
+
+    </script>
+</body>
+
+</html>

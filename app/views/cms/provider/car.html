@@ -1,0 +1,84 @@
+<div class="row">
+    <div class="portlet box red">
+
+        <div class="portlet-title">
+            <div class="caption">
+                <i class="fa fa-flash"></i>
+                <span class="caption-subject bold uppercase">Cars</span>
+                <span class="caption-helper">Manage cars...</span>
+            </div>
+
+            <div class="actions" style="display: inline-block;">
+                <a class="btn btn-default green btn-circle" ng-click="createCar()">Add New Car</a>
+            </div>
+        </div>
+
+        <div class="portlet-body">
+
+            <table class="table table-striped table-bordered table-hover dataTable text-center">
+                <thead>
+
+                    <tr class="heading">
+                        <th style="text-align: center;" width="25%">Plate</th>
+                        <th style="text-align: center;" width="25%">Condition</th>
+                        <th style="text-align: center;" width="25%">Parking</th>
+                        <th style="text-align: center;" width="25%">Actions</th>
+                    </tr>
+
+                </thead>
+
+                <tbody>
+                    <tr></tr>
+                    <tr>
+                        <td>
+                            <input type="text" class="form-control" ng-model="filter.plate" placeholder="Typing..." ui-keypress="{13:'filterBy()'}">
+                        </td>
+
+                        <td>
+                            <select ng-model="filter.condition" class="form-control" ui-keypress="{13:'filterBy()'}">
+                                <option value="">All</option>
+                                <option value="Excellent">Excellent</option>
+                                <option value="Normal">Normal</option>
+                                <option value="Bad">Bad</option>
+                            </select>
+                        </td>
+
+                        <td>
+                            <input type="text" disabled class="form-control" ng-model="filter.parking" placeholder="Typing..." ui-keypress="{13:'filterBy()'}">
+                        </td>
+
+                        <td style="vertical-align: middle;">
+
+                            <a class="btn default btn-sm btn-circle green" style="margin-bottom: 3px;" ng-click="filterBy()">
+                                <i class="fa fa-search"></i> Search
+                            </a>
+
+                            <a class="btn default btn-sm btn-circle red" style="margin-bottom: 3px;" ng-click="resetFilter()">
+                                <i class="fa fa-times"></i> Reset
+                            </a>
+
+                        </td>
+                    </tr>
+
+                    <tr ng-repeat="car in carList">
+                        <td style="vertical-align: middle;">{{car.plate}}</td>
+                        <td style="vertical-align: middle;">{{car.condition}}</td>
+                        <td style="vertical-align: middle;">{{car.parking.name}}</td>
+
+                        <td style="vertical-align: middle;">
+                            <a class="btn default btn-xs btn-circle black" ng-click="editCar(car)" style="margin-bottom: 3px;" ng-disabled="user.status != 'active'">
+                                <i class="fa fa-edit"></i> Edit
+                            </a>
+                        </td>
+                    </tr>
+
+                </tbody>
+            </table>
+
+            <pagination total-items="totalItems" ng-model="currentPage"
+                        items-per-page="itemsPerPage"
+                        max-size="5" class="pagination-sm" boundary-links="true">
+            </pagination>
+        </div>
+    </div>
+</div>

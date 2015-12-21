@@ -1,0 +1,210 @@
+<ul class="breadcrumb" id="rentCarView">
+    <li><a ui-sref="home">Home</a></li>
+    <li class="active">Car Rental</li>
+</ul>
+
+<div class="row">
+    <div class="portlet">
+        <div class="portlet-title">
+            <div class="caption">
+                <i class="fa fa-car"></i> BOOK YOUR <span style="color: red;"><strong>CAR</strong></span>
+            </div>
+        </div>
+
+        <div class="portlet-body">
+            <div class="col-md-6">
+                <form role="form" ng-submit="searchCar()">
+                    <div class="form-body">
+
+                        <div class="form-group">
+                            <label>Pickup Location</label>
+                            <select required class="form-control">
+                                <option>Option 1</option>
+                                <option>Option 2</option>
+                                <option>Option 3</option>
+                                <option>Option 4</option>
+                                <option>Option 5</option>
+                            </select>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>Pickup Date</label>
+                                    <input required placeholder="From" ng-click="openFrom($event)" type="text" ng-model="search.date.from" class="form-control" datepicker-popup="dd-MMMM-yyyy" is-open="openedFrom" min-date="minDate" max-date="maxDate" datepicker-options="dateOptions" close-text="Close">
+                                </div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>Pickup Time</label>
+                                    <select required class="form-control">
+                                        <option>Option 1</option>
+                                        <option>Option 2</option>
+                                        <option>Option 3</option>
+                                        <option>Option 4</option>
+                                        <option>Option 5</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>Return Date</label>
+                                    <input required placeholder="From" ng-click="openTo($event)" type="text" ng-model="search.date.to" class="form-control" datepicker-popup="dd-MMMM-yyyy" is-open="openedTo" min-date="minDate" max-date="maxDate" datepicker-options="dateOptions" close-text="Close">
+                                </div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>Return Time</label>
+                                    <select required class="form-control">
+                                        <option>Option 1</option>
+                                        <option>Option 2</option>
+                                        <option>Option 3</option>
+                                        <option>Option 4</option>
+                                        <option>Option 5</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <button type="submit" class="btn btn-primary" name="submit" id="submit">SEARCH</button>
+                        </div>
+                    </div>
+
+                </form>
+
+            </div>
+
+            <!--<div class="col-md-6">
+                <div class="page-slider margin-bottom-40">
+                    <div class="fullwidthbanner-container revolution-slider">
+                        <div revolution-slider class="fullwidthabnner">
+                            <ul id="revolutionul">
+                                
+
+
+                                <li data-transition="fade" data-slotamount="8" data-masterspeed="700" data-delay="9400" data-thumb="bower_components/metro/assets/frontend/pages/img/revolutionslider/thumbs/thumb2.jpg">
+                                    
+                                    <img src="bower_components/metro/assets/frontend/pages/img/revolutionslider/bg1.jpg" alt="">
+
+                                    <div class="caption lft slide_title slide_item_left"
+                                         data-x="30"
+                                         data-y="105"
+                                         data-speed="400"
+                                         data-start="1500"
+                                         data-easing="easeOutExpo">
+                                        Need to rent a car?
+                                    </div>
+
+                                    <div class="caption lfb"
+                                         data-x="640"
+                                         data-y="55"
+                                         data-speed="700"
+                                         data-start="1000"
+                                         data-easing="easeOutExpo">
+                                        <img src="bower_components/metro/assets/frontend/pages/img/revolutionslider/man-winner.png" alt="Image 1">
+                                    </div>
+                                </li>
+
+
+                                <li data-transition="fade" data-slotamount="8" data-masterspeed="700" data-delay="9400" data-thumb="bower_components/metro/assets/frontend/pages/img/revolutionslider/thumbs/thumb2.jpg">
+                                    
+                                    <img src="bower_components/metro/assets/frontend/pages/img/revolutionslider/bg9.jpg" alt="">
+
+                                    <div class="caption lft slide_title_white slide_item_left"
+                                         data-x="30"
+                                         data-y="90"
+                                         data-speed="400"
+                                         data-start="1500"
+                                         data-easing="easeOutExpo">
+                                        Explore the Power<br><span class="slide_title_white_bold"> EasyBookings</span>
+                                    </div>
+
+                                    <div class="caption lfb"
+                                         data-x="640"
+                                         data-y="0"
+                                         data-speed="700"
+                                         data-start="1000"
+                                         data-easing="easeOutExpo">
+                                        <img src="bower_components/metro/assets/frontend/pages/img/revolutionslider/lady.png" alt="Image 1">
+                                    </div>
+                                </li>
+
+                                
+                                <li data-transition="fade" data-slotamount="7" data-masterspeed="300" data-delay="9400" data-thumb="bower_components/metro/assets/frontend/pages/img/revolutionslider/thumbs/thumb2.jpg">
+                                    <img src="bower_components/metro/assets/frontend/pages/img/revolutionslider/bg2.jpg" alt="">
+                                    <div class="caption lfl slide_title slide_item_left"
+                                         data-x="30"
+                                         data-y="125"
+                                         data-speed="400"
+                                         data-start="3500"
+                                         data-easing="easeOutExpo">
+                                        Convenient &amp; Fast
+                                    </div>
+
+                                    <div class="caption lfr slide_item_right"
+                                         data-x="635"
+                                         data-y="105"
+                                         data-speed="1200"
+                                         data-start="1500"
+                                         data-easing="easeOutBack">
+                                        <img src="bower_components/metro/assets/frontend/pages/img/revolutionslider/mac.png" alt="Image 1">
+                                    </div>
+                                    <div class="caption lfr slide_item_right"
+                                         data-x="580"
+                                         data-y="245"
+                                         data-speed="1200"
+                                         data-start="2000"
+                                         data-easing="easeOutBack">
+                                        <img src="bower_components/metro/assets/frontend/pages/img/revolutionslider/ipad.png" alt="Image 1">
+                                    </div>
+                                    <div class="caption lfr slide_item_right"
+                                         data-x="735"
+                                         data-y="290"
+                                         data-speed="1200"
+                                         data-start="2500"
+                                         data-easing="easeOutBack">
+                                        <img src="bower_components/metro/assets/frontend/pages/img/revolutionslider/iphone.png" alt="Image 1">
+                                    </div>
+                                    <div class="caption lfr slide_item_right"
+                                         data-x="835"
+                                         data-y="230"
+                                         data-speed="1200"
+                                         data-start="3000"
+                                         data-easing="easeOutBack">
+                                        <img src="bower_components/metro/assets/frontend/pages/img/revolutionslider/macbook.png" alt="Image 1">
+                                    </div>
+                                    <div class="caption lft slide_item_right"
+                                         data-x="865"
+                                         data-y="45"
+                                         data-speed="500"
+                                         data-start="5000"
+                                         data-easing="easeOutBack">
+                                        <img src="bower_components/metro/assets/frontend/pages/img/revolutionslider/hint1-red.png" id="rev-hint1" alt="Image 1">
+                                    </div>
+                                    <div class="caption lfb slide_item_right"
+                                         data-x="355"
+                                         data-y="355"
+                                         data-speed="500"
+                                         data-start="5500"
+                                         data-easing="easeOutBack">
+                                        <img src="bower_components/metro/assets/frontend/pages/img/revolutionslider/hint2-red.png" id="rev-hint2" alt="Image 1">
+                                    </div>
+                                </li>
+
+                            </ul>
+                            <div class="tp-bannertimer tp-bottom"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>-->
+        </div>
+    </div>
+</div>
+
+<!-- END SLIDER -->

@@ -1,0 +1,92 @@
+/* Sticky footer styles
+-------------------------------------------------- */
+html {
+    position: relative;
+    min-height: 100%;
+}
+
+body {
+    /* Margin bottom by footer height */
+    margin-bottom: 100px;
+    width:100%;
+}
+
+#MainDiv {
+    width:80%;
+    margin-left:auto;
+    margin-right:auto;
+    margin-bottom: 100px;
+}
+
+.footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    /* Set the fixed height of the footer here */
+    height: 60px;
+    background-color: #f5f5f5;
+}
+
+
+/* Custom page CSS
+-------------------------------------------------- */
+/* Not required for template or sticky footer method. */
+
+body > .container {
+    padding: 60px 15px 0;
+}
+
+.container .text-muted {
+    margin: 20px 0;
+}
+
+.footer > .container {
+    padding-right: 15px;
+    padding-left: 15px;
+}
+
+code {
+    font-size: 80%;
+}
+
+@media screen and (min-width:1600) {
+    #MainDiv {
+        width:100%;
+    }
+}
+
+
+@media screen and (orientation:portrait) {
+    #MainDiv {
+        width:100%;
+    }
+}
+
+.actionCell {
+    
+}
+    .actionCell button {
+        display:inline;
+    }
+    .actionCell i {
+        margin-right:0.3em;
+    }
+
+#userTable {
+    
+}
+
+.element-square {
+    border-radius:0;
+}
+
+.input-group {
+    display:block;
+}
+.input-group div {
+    display:inline;
+}
+
+.top_menu :hover {
+    cursor:pointer;
+}

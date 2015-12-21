@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <!-- Global styles START -->
+    <link href="bower_components/metro/assets/global/plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    <link href="bower_components/metro/assets/global/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Global styles END -->
+    <!-- Page level plugin styles START -->
+    <link href="bower_components/metro/assets/global/plugins/fancybox/source/jquery.fancybox.css" rel="stylesheet">
+    <link href="bower_components/metro/assets/global/plugins/carousel-owl-carousel/owl-carousel/owl.carousel.css" rel="stylesheet">
+    <link href="bower_components/metro/assets/global/plugins/slider-revolution-slider/rs-plugin/css/settings.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="bower_components/gritter/css/jquery.gritter.css" />
+    <!-- Page level plugin styles END -->
+    <!-- Theme styles START -->
+    <link href="bower_components/metro/assets/global/css/components.css" rel="stylesheet">
+    <link href="bower_components/metro/assets/frontend/layout/css/style.css" rel="stylesheet">
+    <link href="bower_components/metro/assets/frontend/pages/css/style-revolution-slider.css" rel="stylesheet"><!-- metronic revo slider styles -->
+    <link href="bower_components/metro/assets/frontend/layout/css/style-responsive.css" rel="stylesheet">
+    <link href="bower_components/metro/assets/frontend/layout/css/themes/red.css" rel="stylesheet" id="style-color">
+    <link href="bower_components/metro/assets/frontend/layout/css/custom.css" rel="stylesheet">
+
+</head>
+<body class="corporate">
+
+<script>
+
+    function showError(id)
+    {
+        document.getElementById(id).style.display = 'block';
+    }
+
+    function getParameterByName(name)
+    {
+        name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
+        var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
+                results = regex.exec(location.search);
+        return results == null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
+    }
+
+    function activateAccount()
+    {
+        var username = getParameterByName("username");
+
+        var key = getParameterByName("key");
+
+        if(key)
+        {
+            var http = new XMLHttpRequest();
+
+            var url = "/api/activateAccount/" + key + '?username=' + username;
+
+            var password = document.getElementById('password').value;
+
+            var password2 = document.getElementById('password2').value;
+
+            var given_name = document.getElementById('given_name').value;
+
+            var surname = document.getElementById('surname').value;
+
+            var contact = document.getElementById('contact').value;
+
+            var params = "password=" + password + '&password2=' + password2 + '&given_name=' + given_name
+                    + '&surname=' + surname + '&username=' + username + '&contact=' + contact;
+
+            http.open("POST", url, false);
+
+            //Send the proper header information along with the request
+            http.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+            http.setRequestHeader("Connection", "close");
+
+            http.onreadystatechange = function() {//Call a function when the state changes.
+                if(http.status == 200) {
+                    var data = http.responseText;
+
+                    var jsonResponse = JSON.parse(data);
+
+                    window.location = URL.HOMEPAGE;
+
+                } else {
+                    showError('activate-failure');
+                }
+            }
+            http.send(params);
+        }
+
+        return false;
+
+    }
+</script>
+
+<div class="pre-header">
+    <div class="container">
+        <div class="row">
+            <!-- BEGIN TOP BAR LEFT PART -->
+            <div class="col-md-6 col-sm-6 additional-shop-info">
+                <ul class="list-unstyled list-inline">
+                    <li><i class="fa fa-phone"></i><span>+65 8112 6876</span></li>
+                    <li><i class="fa fa-envelope-o"></i><span>linhnh@kaist.ac.kr</span></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="main" style="margin-top: 30px;">
+    <div class="container">
+        <div class="row">
+            <div class="portlet">
+                <div class="portlet-title">
+                    <div class="caption">
+                        <i class="fa fa-lock"></i> ACTIVATION FORM
+                    </div>
+                </div>
+
+                <div class="portlet-body">
+                    <div class="content-form-page">
+                        <div class="row">
+                            <div class="col-md-7 col-sm-7">
+                                <form class="form-horizontal form-without-legend" role="form" onSubmit="return activateAccount()" method="post">
+
+                                    <div class="form-group">
+                                        <label class="col-md-4 control-label">Given Name <span class="require">*</span></label>
+                                        <div class="col-md-8">
+                                            <input autofocus required type="text" class="form-control" name="given_name" id="given_name">
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="col-md-4 control-label">Surname <span class="require">*</span></label>
+                                        <div class="col-md-8">
+                                            <input required type="text" class="form-control" name="surname" id="surname">
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="password" class="col-md-4 control-label">Password <span class="require">*</span></label>
+                                        <div class="col-md-8">
+                                            <input required type="password" class="form-control" name="password" id="password">
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="password" class="col-md-4 control-label">Confirm Password <span class="require">*</span></label>
+                                        <div class="col-md-8">
+                                            <input required type="password" class="form-control" name="password2" id="password2">
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="col-md-4 control-label">Contact</label>
+                                        <div class="col-md-8">
+                                            <input type="text" class="form-control" name="contact" id="contact">
+                                        </div>
+                                    </div>
+
+                                    <div id="activate-failure" style="display:none" class="form-group">
+                                        <div class="col-md-4"></div>
+                                        <label class="control-label">There is some problem in activating your account. Please try again.</label>
+                                    </div>
+
+
+                                    <div class="form-group padding-top-10">
+                                        <label class="col-md-4 control-label"></label>
+                                        <div class="col-md-8">
+                                            <button type="submit" class="btn btn-primary" name="submit" type="submit" id="submit">ACTIVATION</button>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group padding-top-10">
+                                        <label class="col-md-4 control-label"></label>
+                                        <div class="col-md-8">
+                                            <div class="login-socio">
+                                                <p class="text-muted">Find us on:</p>
+                                                <ul class="social-icons">
+                                                    <li><a data-original-title="facebook" class="facebook" title="facebook"></a></li>
+                                                    <li><a data-original-title="Twitter" class="twitter" title="Twitter"></a></li>
+                                                    <li><a data-original-title="Google Plus" class="googleplus" title="Google Plus"></a></li>
+                                                    <li><a data-original-title="Linkedin" class="linkedin" title="LinkedIn"></a></li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                            <div class="col-md-4 col-sm-4 pull-right">
+                                <div class="form-info">
+                                    <h2><em>Important</em> Information</h2>
+
+                                    <button type="button" class="btn btn-default">More details</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script src="bower_components/jquery/dist/jquery.min.js"></script>
+<script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
+<script src="bower_components/bootbox.min.js"></script>
+<script src="bower_components/jquery-cookie/jquery.cookie.js"></script>
+<script src="bower_components/gritter/js/jquery.gritter.min.js"></script>
+<script src="scripts/utils.js"></script>
+
+
+</body>
+</html>

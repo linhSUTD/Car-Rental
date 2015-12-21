@@ -1,0 +1,369 @@
+/*!
+ * Start Bootstrap - Scrolling Nav HTML Template (http://startbootstrap.com)
+ * Code licensed under the Apache License v2.0.
+ * For details, see http://www.apache.org/licenses/LICENSE-2.0.
+ */
+
+body {
+    width: 100%;
+    height: 100%;
+    font-family: "Trebuchet MS", Helvetica, sans-serif;
+}
+
+.body-no-scroll {
+    overflow-y:hidden;
+}
+
+html {
+    width: 100%;
+    height: 100%;
+}
+
+@media(min-width:767px) {
+    .navbar {
+        padding: 20px 0;
+        -webkit-transition: background .5s ease-in-out,padding .5s ease-in-out;
+        -moz-transition: background .5s ease-in-out,padding .5s ease-in-out;
+        transition: background .5s ease-in-out,padding .5s ease-in-out;
+    }
+
+    .top-nav-collapse {
+        padding: 0;
+    }
+}
+
+/* Demo Sections - You can use these as guides or delete them - the scroller will work with any sort of height, fixed, undefined, or percentage based.
+The padding is very important to make sure the scrollspy picks up the right area when scrolled to. Adjust the margin and padding of sections and children 
+of those sections to manage the look and feel of the site. */
+
+#intro {
+    background: url(../images/car_background.jpg) 1% 0 fixed;
+    min-height: 100%;
+    height: auto;
+    overflow: hidden;
+}
+
+#about {
+    padding: 0;
+    background: url(../images/car3.jpg);
+    color: black;
+}
+
+.page-section {
+    height: 100%;
+    text-align: center;
+    background: #eee;
+    background-size: 100% 100%;
+    padding-top: 150px;
+    border-bottom: 0.5em solid rgb(255, 106, 0);
+}
+
+
+.intro-big-text-center {
+    color: white;
+    font-weight: 700;
+    font-size: 50px;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.intro-medium-text-center {
+    color: white;
+    font-weight: 400;
+    font-size: 30px;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+}
+
+#intro-logo {
+    max-width: 20%;
+    margin-top: 5%;
+    margin-bottom: 5%;
+    margin-left: -5%;
+    margin-right: auto;
+}
+
+.intro-small-text-center {
+    color: white;
+    font-weight: 600;
+    font-size: 25px;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    margin-top: 5%;
+    margin-bottom: 5%;
+    border-top: 1px solid white;
+    border-bottom: 1px solid white;
+    width: 50%;
+}
+
+.direct-button {
+    border: 1px solid white;
+    padding: 0.5em;
+    color: white;
+    background: rgba(61, 61, 61,0.4);
+    font-size: 18px;
+}
+
+    .direct-button:hover {
+        background: rgb(209, 64, 0);
+        color: white;
+    }
+
+.collumn-half {
+    height: 100%;
+}
+
+.text-large-right {
+    font-weight: 700;
+    font-size: 50px;
+    margin-right: 5%;
+    float: right;
+    text-align: right;
+    width: 60%;
+    margin-top: 40%;
+    line-height: 1.1em;
+    color: white;
+}
+
+#achievementText {
+    color: white;
+    height: auto;
+}
+
+.text-medium-center {
+    font-weight: 700;
+    font-size: 40px;
+    text-align: center;
+    line-height: 1.1em;
+    color: white;
+}
+
+
+#logo-big {
+    height: 30%;
+}
+
+#services {
+    padding-top: 75px;
+}
+
+#achievement {
+    background-color: rgb(242, 189, 42);
+    overflow-y: hidden;
+    min-height: 100%;
+    height: auto;
+}
+
+.statistic-value-big {
+    font-size: 50px;
+    font-weight: 500;
+    color: rgb(53, 53, 53);
+}
+
+.statistic-unit-big {
+    font-size: 30px;
+    font-weight: 400;
+    color: rgb(47, 47, 47);
+}
+
+@media screen and (min-width: 990px) {
+    .vertical-center {
+        position: relative;
+        top: 50%;
+        -webkit-transform: translateY(-50%);
+        -ms-transform: translateY(-50%);
+        transform: translateY(-50%);
+        margin: 0;
+    }
+
+    
+}
+
+@media screen and (max-width: 990px) {
+    .service-big-text-center {
+        font-size: 15px;
+        font-weight: 500;
+        margin-bottom: 0.2em;
+        text-align: center;
+        color: rgb(60, 60, 60);
+    }
+}
+
+
+.subtitle-text-md-center {
+    font-weight: 400;
+    font-size: 17px;
+    text-align: center;
+    color: white;
+}
+
+.statistic-value-medium {
+    font-size: 50px;
+    font-weight: 600;
+    color: rgb(53, 53, 53);
+}
+
+.statistic-unit-medium {
+    font-size: 23px;
+    font-weight: 500;
+    color: rgb(47, 47, 47);
+}
+
+.service-big-text-center {
+    font-size: 25px;
+    font-weight: 600;
+    margin-bottom: 0.2em;
+    text-align: center;
+    color: rgb(60, 60, 60);
+}
+
+.svg-container {
+    padding: 2px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 30%;
+}
+
+
+.statisticRow {
+    margin-bottom: 8%;
+}
+
+
+
+#pageMap {
+    height: 80%;
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 5%;
+    border: 2px solid rgb(86, 72, 72);
+}
+
+#achievementInfo {
+    margin-top: 5%;
+}
+
+#feedback {
+    background: url(../images/texture.jpg);
+    background-size: auto 200%;
+    padding: 0;
+}
+
+#feedback-carousel {
+    height: 100%;
+}
+
+.feedback-slide {
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: rgba(39, 39, 39,0.6);
+    padding: 1em;
+    height: 100%;
+}
+
+.feedback-text {
+    color: white;
+    font-size: 17px;
+    line-height: 2em;
+}
+
+.carousel-control.right {
+    background-image: none;
+    background-color: transparent;
+}
+
+.carousel-control.left {
+    background-image: none;
+    background-color: transparent;
+}
+
+.feedback-author-div {
+    width: 70%;
+    margin-left: auto;
+    margin-right: auto;
+    height: 20%;
+    color: white;
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.author-img {
+    height: 70%;
+    margin-right: 1em;
+}
+
+.author-name {
+    color: white;
+}
+
+
+.inline-svg .svg-container {
+    display: inline;
+}
+
+
+#ending {
+    background: url(../images/car3.jpg);
+    background-size: auto 250%;
+    min-height: 100%;
+    height: auto;
+    overflow: hidden;
+}
+
+#endLogo {
+    width: 3%;
+    margin-left: 10%;
+    margin-right: 10%;
+    margin-bottom: 5%;
+}
+
+.intro-tiny-text-center {
+    font-size: 18px;
+    font-weight: 400;
+    color: white;
+    text-align: center;
+}
+
+.signup-button-end {
+    padding: 0.6em;
+    background-color: rgb(242, 189, 42);
+    border: none;
+    color: rgb(65, 65, 65);
+    font-weight: 500;
+    margin-top: 2%;
+    font-size: 17px;
+}
+
+    .signup-button-end:hover {
+        background-color: white;
+    }
+
+
+.signup-button-start {
+    padding: 0.5em;
+    background-color: rgb(242, 189, 42);
+    border: none;
+    color: rgb(65, 65, 65);
+    font-weight: 500;
+    font-size: 15px;
+    margin-right: 1em;
+    margin-top: 1em;
+}
+
+    .signup-button-start:hover {
+        background-color: white;
+    }
+
+#contact-end {
+    padding: 1em;
+    border-bottom: 1px solid white;
+    position:relative;
+}
+
+

@@ -1,0 +1,102 @@
+
+<div class="modal-body">
+    <div class="portlet light bordered">
+        <div class="portlet-title">
+            <div class="caption">
+                User Information
+            </div>
+        </div>
+
+        <div class="portlet-body form">
+
+            <form class="form-horizontal" role="form">
+                <div class="form-body">
+
+                    <div class="form-group">
+                        <label class="col-md-3 control-label" style="color: black;">Email</label>
+                        <div class="col-md-9">
+                            <div class="input-group">
+                                <span class="input-group-addon">
+                                    <i class="fa fa-envelope"></i>
+                                </span>
+                                <input disabled ng-model="user.email" class="form-control">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-md-3 control-label" style="color: black;">Surname</label>
+                        <div class="col-md-9">
+                            <div class="input-group">
+                                <span class="input-group-addon">
+                                    <i class="fa fa-user"></i>
+                                </span>
+                                <input required ng-model="user.surname" class="form-control" placeholder="Typing...">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-3 control-label" style="color: black;">Given Name</label>
+                        <div class="col-md-9">
+                            <div class="input-group">
+                                <span class="input-group-addon">
+                                    <i class="fa fa-user"></i>
+                                </span>
+                                <input required ng-model="user.given_name" class="form-control" placeholder="Typing...">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-md-3 control-label" style="color: black;">Role</label>
+                        <div class="col-md-9">
+                            <div class="input-group">
+                                <span class="input-group-addon">
+                                    <i class="fa fa-user"></i>
+                                </span>
+
+                                <select required ng-model="user.role" class="form-control">
+                                    <option value="">---Select Role---</option>
+                                    <option value="Public">Public</option>
+                                    <option value="Admin">Admin</option>
+                                    <option value="Provider">Provider</option>
+                                </select>
+
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="form-group">
+                        <label class="col-md-3 control-label" style="color: black;">Status</label>
+                        <div class="col-md-9">
+                            <div class="input-group">
+                                <span class="input-group-addon">
+                                    <i class="fa fa-user"></i>
+                                </span>
+
+                                <select required ng-model="user.status" class="form-control">
+                                    <option value="">---Select Status---</option>
+                                    <option value="active">Active</option>
+                                    <option value="suspended">Suspended</option>
+                                    <option value="inactive">Inactive</option>
+                                </select>
+
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<div class="modal-footer">
+    <div >
+        <button class="btn btn-sm btn-circle red" type="button" ng-click="closeModal()"><i class="fa fa-ban"></i> Cancel</button>
+        <button class="btn btn-sm btn-circle green" type="button" ng-click="submitUserForm()"><i class="icon-plus"></i>Update User</button>
+    </div>
+
+</div>

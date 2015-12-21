@@ -1,0 +1,64 @@
+<div class="row">
+    <div class="portlet box red">
+        <div class="portlet-title">
+            <div class="caption">
+                <i class="fa fa-flash"></i>
+                <span class="caption-subject bold uppercase">Parks</span>
+                <span class="caption-helper">Manage Parking Lots...</span>
+            </div>
+
+            <div class="actions" style="display: inline-block;">
+                <a class="btn btn-default green btn-circle" ng-click="addPark_Click()">Add New Parking Lot</a>
+            </div>
+        </div>
+
+        <div class="portlet-body">
+            <table class="table table-striped table-bordered table-hover dataTable text-center">
+                <div class="col-md-3">
+                    <div class="list-group element-square" id="parkingList">
+                        <a href="" class="list-group-item element-square" ng-repeat="park in parkList" ng-click="parkList_Click(park);">
+
+                            <span class="badge" ng-class="{'alert-success': park.active == true || 'alert-danger'}">{{park.active ? 'active' : 'inactive'}}</span>
+
+                            <p style="font-weight:bold;">{{park.name}}</p>
+
+                            <p>Car Available: {{park.carAvailable}}</p>
+
+                        </a>
+                    </div>
+                </div>
+
+                <div class="col-md-9">
+                    <div map-canvas id="park_mapcanvas" style="height: 500px;"></div>
+                </div>
+
+                <div class="modal fade " id="parkNameModal" tabindex="-1" role="dialog" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                <h4 class="modal-title" id="myModalLabel">Choose a name for your parking lot</h4>
+                            </div>
+                            <div class="modal-body">
+                                <input class="form-control element-square" placeholder="Park Name" id="parknameInput" ng-model="parkName"/>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="element-square btn btn-default" data-dismiss="modal" ng-click="addPark_Cancel();">Cancel</button>
+                                <button type="button" class="element-square btn btn-primary" ng-click="submit_OnClick();">Submit</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </table>
+        </div>
+
+    </div>
+</div>
+
+
+<script>
+    document.getElementById('parkingList').style.height = (document.documentElement.clientHeight -70)*0.8 + 'px';
+    document.getElementById('park_mapcanvas').style.minHeight = document.documentElement.clientHeight * 0.7 + 'px';
+
+</script>

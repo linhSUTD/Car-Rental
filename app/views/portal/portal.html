@@ -1,0 +1,281 @@
+<!-- Navigation -->
+<div portal-scroll>
+    <nav class="navbar navbar-default navbar-fixed-top top-nav-collapse" role="navigation" portal-nav>
+        <div class="container">
+            <div class="navbar-header page-scroll">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse navbar-ex1-collapse">
+                <ul class="nav navbar-nav ">
+                    <!-- Hidden li included to remove active class from about link when scrolled up past about section -->
+                    <li class="hidden">
+                        <a class="page-scroll" href="#page-top"></a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" href="#intro">Intro</a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" href="#services" id="servicesLink">How it works</a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" href="#achievement" id="achievementLink">Achievements</a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" href="#feedback">Feedbacks</a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" href="#ending">Join now</a>
+                    </li>
+                </ul>
+                <ul class="nav navbar-nav" style="float:right;">
+                    <li>
+                        <a ui-sref="login">Login</a>
+                    </li>
+                    <li>
+                        <a ui-sref="register">Sign up</a>
+                    </li>
+                </ul>
+
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container -->
+    </nav>
+
+    <!-- Intro Section -->
+    <section id="intro" class="page-section" data-speed="6" data-type="background">
+        <div class="container">
+            <p class="intro-big-text-center">MEKATOPIA</p>
+
+            <img src="images/logo_white.png" id="intro-logo"/>
+
+            <div class="intro-small-text-center">
+                GET YOUR OWN CAR NOW
+            </div>
+
+
+            <button class="direct-button" onclick="document.getElementById('servicesLink').click();">Find out how</button>
+
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="page-section" data-speed="6" data-type="background" ng-controller="mapController">
+        <div style="height:10%;">
+            <p class="service-big-text-center " style="color:black;padding-bottom:0.1em;">{{modalTitle}}</p>
+        </div>
+        <div id="pageMap" map-canvas style="width: 90%; height: 500px;">
+
+        </div>
+
+        <div class="modal fade" id="mapModal">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title" id="mapModalTitle">{{modalTitle}}</h4>
+                    </div>
+                    <div class="modal-body">
+                    <span>
+                        Park icon looks like this
+                        <img ng-src="{{parkicon}}" />
+                    </span>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">OK</button>
+
+                    </div>
+                </div><!-- /.modal-content -->
+            </div><!-- /.modal-dialog -->
+        </div><!-- /.modal -->
+    </section>
+
+
+    <section id="achievement" class="page-section" data-speed="6" data-type="background" ng-controller="achievementController">
+
+        <div id="achievement_topPlace" style="height:1px;width:100%;"></div>
+        <div>
+            <div class="vertical-center">
+                <p class="text-medium-center slide-left" id="achievementText">Our achievement</p>
+                <p class="subtitle-text-md-center">We are a big family with an insatiable thirst for adventures and sports.</p>
+            </div>
+
+        </div>
+        <div class="container" id="achievementInfo">
+
+            <div class="row statisticRow">
+                <div class="statisticElement col-md-4" data-statistic="user">
+                    <div style="padding-top:1%;">
+                        <div id="userSvgVector" class="svg-container"></div>
+                    </div>
+                    <div>
+                        <div class="statistic-value-medium">{{getFormatedNumber(user.value)}}</div>
+                        <div class="statistic-unit-medium">million users</div>
+                    </div>
+                </div>
+
+                <div class="statisticElement col-md-4" data-statistic="road">
+                    <div style="padding-top:1%;">
+                        <div id="roadSvgVector" class="svg-container"></div>
+                    </div>
+                    <div>
+                        <div class="statistic-value-medium">{{getFormatedNumber(road.value)}} </div>
+                        <div class="statistic-unit-medium">kilometers covered</div>
+                    </div>
+                </div>
+
+                <div class="statisticElement col-md-4" data-statistic="upvote">
+                    <div style="padding-top:1%;">
+                        <div id="upvoteSvgVector" class="svg-container"></div>
+                    </div>
+                    <div>
+                        <div class="statistic-value-medium">{{getFormatedNumber(upvote.value)}}  </div>
+                        <div class="statistic-unit-medium">positive feedbacks</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row statisticRow">
+                <div class="statisticElement col-md-4" data-statistic="time">
+                    <div style="padding-top:1%;">
+                        <div id="timeSvgVector" class="svg-container"></div>
+                    </div>
+                    <div>
+                        <div class="statistic-value-medium">{{getFormatedNumber(time.value)}}</div>
+                        <div class="statistic-unit-medium">hours worked</div>
+                    </div>
+                </div>
+
+                <div class="statisticElement col-md-4" data-statistic="money">
+                    <div style="padding-top:1%;">
+                        <div id="moneySvgVector" class="svg-container"></div>
+                    </div>
+                    <div>
+                        <div class="statistic-value-medium">{{getFormatedNumber(money.value)}} </div>
+                        <div class="statistic-unit-medium">dollars saved</div>
+                    </div>
+                </div>
+
+                <div class="statisticElement col-md-4" data-statistic="social">
+                    <div style="padding-top:1%;">
+                        <div id="socialSvgVector" class="svg-container"></div>
+                    </div>
+                    <div>
+                        <div class="statistic-value-medium">{{getFormatedNumber(social.value)}} </div>
+                        <div class="statistic-unit-medium">social followings</div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <section id="feedback" class="page-section" class="page-section" data-speed="6" data-type="background" style="height: 688px;">
+        <div class="col-md-4 vertical-center" style="padding:1em;">
+            <p class="text-medium-center"> Why our clients love us</p>
+            <p class="subtitle-text-md-center">AND WHY THEY KEEP COMING BACK</p>
+        </div>
+        <div class="col-md-8 vertical-center" style="height:65%;">
+            <div id="feedback-carousel" class="carousel slide" data-ride="carousel" data-interval="9000">
+
+                <!-- Wrapper for slides -->
+                <div class="carousel-inner" style="height:100%;">
+                    <div class="item active" style="height:100%;">
+                        <div class="feedback-slide">
+                            <div style="height:100%;">
+                                <p class="feedback-text vertical-center" style="height:70%;">
+                                    “I travel to the White house three times a day just to experience the driving. My wife tried it and she said being a taxi driver was much more fun than the First Lady. ”
+
+                                </p>
+                                <div class="feedback-author-div">
+                                <span>
+                                    <img class="author-img img-circle" src="images/obama.jpg" />
+                                    Barrack Obama
+                                </span>
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </div>
+                    <div class="item" style="height:100%;">
+                        <div class="feedback-slide">
+                            <div style="height:100%;">
+                                <p class="feedback-text vertical-center" style="height:70%;">
+                                    “Absolutely the most amazing and comforting service possible. The only problem is that when it falls, you don't get a penalty. But who cares when you can score a hattrick in 8 minutes? ”
+
+                                </p>
+                                <div class="feedback-author-div">
+                                <span>
+                                    <img class="author-img img-circle" src="images/ronaldo.jpg" />
+                                    Christiano Ronaldo
+                                </span>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="item" style="height:100%;">
+                        <div class="feedback-slide">
+                            <div style="height:100%;">
+                                <p class="feedback-text vertical-center" style="height:70%;">
+                                    “Darn it, I seriously wish I founded this company 40 years ago instead of Microsoft. These cars have much better Windows than I do :( ”
+
+                                </p>
+                                <div class="feedback-author-div">
+                                <span>
+                                    <img class="author-img img-circle" src="images/bilgate.jpg" />
+                                    Bill Gates
+                                </span>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Controls -->
+                <a class="left carousel-control carousel-arrow" href="#feedback-carousel" role="button" data-slide="prev">
+                    <span class="glyphicon glyphicon-chevron-left"></span>
+                </a>
+                <a class="right carousel-control carousel-arrow" href="#feedback-carousel" role="button" data-slide="next">
+                    <span class="glyphicon glyphicon-chevron-right "></span>
+                </a>
+            </div> <!-- Carousel -->
+        </div>
+    </section>
+
+    <section id="ending" class="page-section" data-speed="5" data-type="background">
+        <img src="images/logo_white.png" id="endLogo"/>
+        <div class="intro-medium-text-center" style="margin-bottom:1%;">
+            Interested? Join us
+        </div>
+        <div class="intro-tiny-text-center">
+            And do not mind the numbers above
+        </div>
+        <div class="intro-tiny-text-center">
+            Those are all fake.
+        </div>
+        <button class="signup-button-end" ui-sref="register">Sign up now</button>
+        <div class="container" id="contact-end" style="padding-left:0;padding-right:0;line-height:1.9em;margin-top:5%;">
+            <div class="col-md-6" style="color:white;text-align:left;padding-left:0;font-size:17px;">
+                <div style="color:rgb(96, 96, 96);">DEVELOPER </div>
+                NGUYEN HOANG LINH
+                <br />
+                BISHAN 13, BLOCK 168 16-03, SINGAPORE
+                <br />
+                (65) 8112 6876 - <span style="color:rgb(226, 173, 26)">linhnh@kaist.ac.kr</span>
+            </div>
+        </div>
+    </section>
+</div>
