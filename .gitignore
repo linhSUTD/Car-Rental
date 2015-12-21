@@ -1,6 +1,6 @@
 dist
 .tmp
 .sass-cache
-bower_components
 .ntvs_analysis.dat
 node_modules
+.idea
